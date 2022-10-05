@@ -12,7 +12,15 @@ const comments = require("gulp-header-comment");
 const jshint = require("gulp-jshint");
 const notify = require("gulp-notify");
 const plumber = require("gulp-plumber");
+var deploy      = require('gulp-gh-pages');
 
+/**
+ * Push build to gh-pages
+ */
+gulp.task('deploy', function () {
+  return gulp.src("./source/**/*")
+    .pipe(deploy())
+});
 var path = {
   src: {
     html: "source/*.html",
